@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 from ADHD_HI import ADHDDiagnosis
+import os
 
 app = Flask(__name__)
 CORS(app)
-
 
 QUESTIONS_AR = [
     "هل تشعر بالتململ أو تجد صعوبة في البقاء هادئاً؟",
@@ -21,46 +21,46 @@ QUESTIONS_AR = [
     "هل تتخذ قرارات مهمة أو تخاطر بشكل كبير دون التفكير في العواقب طويلة الأمد؟"
 ]
 
-
 def get_severity_translation(severity_en, lang):
     """ترجمة مستوى الشدة من الإنجليزية للعربية"""
     if lang == 'ar':
         translations = {
             "Very mild symptoms or no initial diagnosis": "أعراض خفيفة جداً أو لا يوجد تشخيص أولي",
-            "Mild Presentation": "شدة بسيطة ",
-            "Moderate Presentation - Formal assessment recommended": "شدة متوسطة - ينصح بالتقييم الرسمي",
-            "Severe Presentation - Urgent need for formal assessment": "شدة متقدمة/شديدة  - ضرورة قصوى للتقييم الرسمي",
+            "Mild Presentation": "شدة بسيطة (Mild Presentation)",
+            "Moderate Presentation - Formal assessment recommended": "شدة متوسطة (Moderate Presentation) - ينصح بالتقييم الرسمي",
+            "Severe Presentation - Urgent need for formal assessment": "شدة متقدمة/شديدة (Severe Presentation) - ضرورة قصوى للتقييم الرسمي",
             "Error in score calculation": "خطأ في حساب النقاط"
         }
         return translations.get(severity_en, severity_en)
     return severity_en
 
-
 @app.route('/')
 def index():
-    """عرض الصفحة الرئيسية"""
-    return render_template('index.html')
 
+    return render_template('index.html')
 
 @app.route('/api/questions', methods=['GET'])
 def get_questions():
-    """إرجاع الأسئلة من نظام الخبراء ADHD_HI"""
-    lang = request.args.get('lang', 'ar')
 
-    
-    engine = ADHDDiagnosis()
+    try:
+        lang = request.args.get('lang', 'ar')
+     
+        engine = ADHDDiagnosis()
 
-   
-    questions_en = [engine.rules_text[i] for i in range(1, 13)]
-
-
-    questions = QUESTIONS_AR if lang == 'ar' else questions_en
-
-    return jsonify({
-        'questions': questions,
-        'success': True
-    })
-
+        questions_en = [engine.rules_text[i] for i in range(1, 13)]
+        
+        questions = QUESTIONS_AR if lang == 'ar' else questions_en
+        
+        return jsonify({
+            'questions': questions,
+            'success': True
+        })
+    except Exception as e:
+        print(f"Error in get_questions: {str(e)}")
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
 
 @app.route('/api/calculate', methods=['POST'])
 def calculate_result():
@@ -72,15 +72,13 @@ def calculate_result():
 
         engine = ADHDDiagnosis()
         engine.reset()
-
-  
+        
         total_score = 0
         for i, answer in enumerate(answers):
             rule_number = i + 1
             if answer and rule_number in engine.rules_data:
                 total_score += engine.rules_data[rule_number]
-
-     
+ 
         score = total_score
         if score <= 6:
             severity = "Very mild symptoms or no initial diagnosis"
@@ -94,30 +92,30 @@ def calculate_result():
             severity = "Error in score calculation"
 
         severity_translated = get_severity_translation(severity, lang)
-
-       
+        
+   
         print("\n==============================")
         print("✅ Initial Diagnosis Results for Hyperactive-Impulsive Pattern")
         print("==============================")
         print(f"Total Score: {score} out of 24 points.")
         print(f"Initial Severity Classification: {severity}")
         print("==============================")
-
+        
         return jsonify({
             'score': total_score,
             'max_score': 24,
             'severity': severity_translated,
             'success': True
         })
-
+        
     except Exception as e:
         print(f"❌ Error calculating result: {str(e)}")
         return jsonify({
             'success': False,
             'error': str(e)
         }), 500
+
 if __name__ == '__main__':
-    import os
     print("=" * 50)
     print("🚀 Starting ADHD Diagnosis Server...")
     print("=" * 50)
@@ -127,10 +125,3 @@ if __name__ == '__main__':
     print("🌐 Bilingual support: Arabic & English")
     print("=" * 50)
     app.run(host='0.0.0.0', port=port, debug=False)
-
-
-
-
-
-
-
