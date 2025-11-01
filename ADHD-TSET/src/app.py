@@ -5,7 +5,7 @@ from ADHD_HI import ADHDDiagnosis
 app = Flask(__name__)
 CORS(app)
 
-# بيانات الأسئلة بالعربية (للترجمة فقط)
+
 QUESTIONS_AR = [
     "هل تشعر بالتململ أو تجد صعوبة في البقاء هادئاً؟",
     "هل تفرك يديك أو قدميك أو تنقر بالأشياء أثناء الجلوس؟",
@@ -27,9 +27,9 @@ def get_severity_translation(severity_en, lang):
     if lang == 'ar':
         translations = {
             "Very mild symptoms or no initial diagnosis": "أعراض خفيفة جداً أو لا يوجد تشخيص أولي",
-            "Mild Presentation": "شدة بسيطة (Mild Presentation)",
-            "Moderate Presentation - Formal assessment recommended": "شدة متوسطة (Moderate Presentation) - ينصح بالتقييم الرسمي",
-            "Severe Presentation - Urgent need for formal assessment": "شدة متقدمة/شديدة (Severe Presentation) - ضرورة قصوى للتقييم الرسمي",
+            "Mild Presentation": "شدة بسيطة ",
+            "Moderate Presentation - Formal assessment recommended": "شدة متوسطة - ينصح بالتقييم الرسمي",
+            "Severe Presentation - Urgent need for formal assessment": "شدة متقدمة/شديدة  - ضرورة قصوى للتقييم الرسمي",
             "Error in score calculation": "خطأ في حساب النقاط"
         }
         return translations.get(severity_en, severity_en)
@@ -47,13 +47,13 @@ def get_questions():
     """إرجاع الأسئلة من نظام الخبراء ADHD_HI"""
     lang = request.args.get('lang', 'ar')
 
-    # إنشاء محرك مؤقت للحصول على الأسئلة
+    
     engine = ADHDDiagnosis()
 
-    # الحصول على الأسئلة بالإنجليزية من النظام الأساسي
+   
     questions_en = [engine.rules_text[i] for i in range(1, 13)]
 
-    # اختيار اللغة المناسبة
+
     questions = QUESTIONS_AR if lang == 'ar' else questions_en
 
     return jsonify({
@@ -70,18 +70,17 @@ def calculate_result():
         answers = data.get('answers', [])
         lang = data.get('lang', 'ar')
 
-        # إنشاء محرك نظام الخبراء
         engine = ADHDDiagnosis()
         engine.reset()
 
-        # حساب النقاط باستخدام منطق النظام الأساسي
+  
         total_score = 0
         for i, answer in enumerate(answers):
             rule_number = i + 1
             if answer and rule_number in engine.rules_data:
                 total_score += engine.rules_data[rule_number]
 
-        # تحديد مستوى الشدة باستخدام نفس منطق النظام الأساسي
+     
         score = total_score
         if score <= 6:
             severity = "Very mild symptoms or no initial diagnosis"
@@ -94,10 +93,9 @@ def calculate_result():
         else:
             severity = "Error in score calculation"
 
-        # ترجمة النتيجة إذا كانت اللغة عربية
         severity_translated = get_severity_translation(severity, lang)
 
-        # طباعة النتيجة في الكونسول (مثل النظام الأصلي)
+       
         print("\n==============================")
         print("✅ Initial Diagnosis Results for Hyperactive-Impulsive Pattern")
         print("==============================")
@@ -128,4 +126,5 @@ if __name__ == '__main__':
     print("✅ System using ADHD_HI.py core engine")
     print("🌐 Bilingual support: Arabic & English")
     print("=" * 50)
+
     app.run(debug=True, port=5000)
