@@ -25,14 +25,13 @@ def get_severity_translation(severity_en, lang):
     if lang == 'ar':
         translations = {
             "Very mild symptoms or no initial diagnosis": "أعراض خفيفة جداً أو لا يوجد تشخيص أولي",
-            "Mild Presentation": "شدة بسيطة ",
-            "Moderate Presentation - Formal assessment recommended": "شدة متوسطة- ينصح بالتقييم الرسمي",
-            "Severe Presentation - Urgent need for formal assessment": "شدة متقدمة/شديدة  - ضرورة قصوى للتقييم الرسمي",
+            "Mild Presentation": "شدة بسيطة (Mild Presentation)",
+            "Moderate Presentation - Formal assessment recommended": "شدة متوسطة (Moderate Presentation) - ينصح بالتقييم الرسمي",
+            "Severe Presentation - Urgent need for formal assessment": "شدة متقدمة/شديدة (Severe Presentation) - ضرورة قصوى للتقييم الرسمي",
             "Error in score calculation": "خطأ في حساب النقاط"
         }
         return translations.get(severity_en, severity_en)
     return severity_en
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -122,4 +121,5 @@ if __name__ == '__main__':
     print("🌐 Bilingual support: Arabic & English")
     print("=" * 50)
     app.run(host='0.0.0.0', port=port, debug=False)
+
 
