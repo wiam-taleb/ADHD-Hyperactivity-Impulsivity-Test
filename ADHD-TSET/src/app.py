@@ -4,14 +4,7 @@ from ADHD_HI import ADHDDiagnosis
 
 app = Flask(__name__)
 CORS(app)
-@app.route('/')
-def home():
-    return render_template('index.html')
-    
-if _name_ == '__main__':
-    import os
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+
 
 QUESTIONS_AR = [
     "هل تشعر بالتململ أو تجد صعوبة في البقاء هادئاً؟",
@@ -123,6 +116,17 @@ def calculate_result():
             'success': False,
             'error': str(e)
         }), 500
+if __name__ == '__main__':
+    import os
+    print("=" * 50)
+    print("🚀 Starting ADHD Diagnosis Server...")
+    print("=" * 50)
+    port = int(os.environ.get('PORT', 5000))
+    print(f"📱 Server running on port: {port}")
+    print("✅ System using ADHD_HI.py core engine")
+    print("🌐 Bilingual support: Arabic & English")
+    print("=" * 50)
+    app.run(host='0.0.0.0', port=port, debug=False)
 
 
 
