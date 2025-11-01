@@ -7,6 +7,11 @@ CORS(app)
 @app.route('/')
 def home():
     return render_template('index.html')
+    
+if _name_ == '_main_':
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
 
 QUESTIONS_AR = [
     "هل تشعر بالتململ أو تجد صعوبة في البقاء هادئاً؟",
@@ -120,16 +125,7 @@ def calculate_result():
         }), 500
 
 
-if __name__ == '__main__':
-    print("=" * 50)
-    print("🚀 Starting ADHD Diagnosis Server...")
-    print("=" * 50)
-    print("📱 Open browser at: http://localhost:5000")
-    print("✅ System using ADHD_HI.py core engine")
-    print("🌐 Bilingual support: Arabic & English")
-    print("=" * 50)
 
-    app.run(debug=True, port=5000)
 
 
 
