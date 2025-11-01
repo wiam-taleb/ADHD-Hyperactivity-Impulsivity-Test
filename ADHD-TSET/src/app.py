@@ -8,11 +8,6 @@ CORS(app)
 def home():
     return render_template('index.html')
 
-if _name_ == '_main_':
-    import os
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-
 QUESTIONS_AR = [
     "هل تشعر بالتململ أو تجد صعوبة في البقاء هادئاً؟",
     "هل تفرك يديك أو قدميك أو تنقر بالأشياء أثناء الجلوس؟",
@@ -135,5 +130,6 @@ if __name__ == '__main__':
     print("=" * 50)
 
     app.run(debug=True, port=5000)
+
 
 
