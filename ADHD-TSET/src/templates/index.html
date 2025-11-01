@@ -18,9 +18,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         body::before {
@@ -61,7 +61,7 @@
             backdrop-filter: blur(20px);
             border-radius: 30px;
             box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
             overflow: hidden;
             position: relative;
@@ -71,7 +71,7 @@
         .header {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 45px 40px;
+            padding: 40px 35px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -120,21 +120,21 @@
         }
 
         .header h1 {
-            font-size: 34px;
-            margin-bottom: 12px;
+            font-size: 30px;
+            margin-bottom: 10px;
             font-weight: 700;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .header p {
-            font-size: 18px;
+            font-size: 16px;
             opacity: 0.95;
             font-weight: 400;
             text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
         }
 
         .content {
-            padding: 50px 40px;
+            padding: 45px 40px;
         }
 
         .welcome-screen, .question-screen, .result-screen {
@@ -157,17 +157,17 @@
         }
 
         .welcome-text h2 {
-            font-size: 28px;
+            font-size: 26px;
             color: #1e3c72;
             margin-bottom: 24px;
             font-weight: 600;
         }
 
         .welcome-text p {
-            font-size: 17px;
+            font-size: 16px;
             line-height: 1.8;
             color: #4a5568;
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
         }
 
@@ -175,8 +175,8 @@
             background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
             color: white;
             border: none;
-            padding: 18px 55px;
-            font-size: 19px;
+            padding: 16px 50px;
+            font-size: 18px;
             border-radius: 35px;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -216,7 +216,7 @@
         }
 
         .progress-container {
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .progress-info {
@@ -263,9 +263,9 @@
 
         .question-card {
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            padding: 35px;
+            padding: 30px;
             border-radius: 24px;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             border: 2px solid #e2e8f0;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
@@ -280,16 +280,15 @@
             color: #2a5298;
             font-weight: 700;
             margin-bottom: 15px;
-            font-size: 15px;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .question-text {
-            font-size: 20px;
+            font-size: 18px;
             color: #1e293b;
-            margin-bottom: 12px;
-            line-height: 1.6;
+            line-height: 1.7;
             font-weight: 500;
         }
 
@@ -300,8 +299,8 @@
         }
 
         .answer-btn {
-            padding: 20px;
-            font-size: 19px;
+            padding: 18px;
+            font-size: 18px;
             border: 3px solid #2a5298;
             background: white;
             border-radius: 18px;
@@ -355,15 +354,15 @@
         }
 
         .result-card h2 {
-            font-size: 32px;
+            font-size: 28px;
             color: #1e3c72;
             margin-bottom: 35px;
             font-weight: 700;
         }
 
         .score-circle {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
             color: white;
@@ -402,7 +401,7 @@
         }
 
         .score-number {
-            font-size: 56px;
+            font-size: 52px;
             font-weight: 800;
             line-height: 1;
         }
@@ -416,7 +415,7 @@
 
         .severity-box {
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            padding: 35px;
+            padding: 30px;
             border-radius: 24px;
             margin: 30px 0;
             border: 2px solid #e2e8f0;
@@ -424,14 +423,14 @@
         }
 
         .severity-title {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             color: #2a5298;
             margin-bottom: 15px;
         }
 
         .severity-text {
-            font-size: 18px;
+            font-size: 17px;
             color: #334155;
             line-height: 1.7;
             font-weight: 500;
@@ -441,12 +440,12 @@
             background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
             border: 2px solid #fbbf24;
             border-radius: 16px;
-            padding: 20px;
+            padding: 18px;
             margin-top: 30px;
             text-align: center;
             color: #92400e;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .restart-btn {
@@ -459,13 +458,34 @@
             color: #64748b;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+                border-radius: 20px;
+            }
+
+            .header {
+                padding: 35px 25px;
+            }
+
             .header h1 {
-                font-size: 26px;
+                font-size: 24px;
+            }
+
+            .header p {
+                font-size: 14px;
             }
 
             .content {
                 padding: 35px 25px;
+            }
+
+            .welcome-text h2 {
+                font-size: 22px;
+            }
+
+            .welcome-text p {
+                font-size: 15px;
             }
 
             .answer-buttons {
@@ -474,7 +494,11 @@
             }
 
             .question-text {
-                font-size: 18px;
+                font-size: 16px;
+            }
+
+            .question-card {
+                padding: 25px;
             }
 
             .score-circle {
@@ -483,7 +507,46 @@
             }
 
             .score-number {
-                font-size: 48px;
+                font-size: 44px;
+            }
+
+            .result-card h2 {
+                font-size: 24px;
+            }
+
+            .severity-box {
+                padding: 25px;
+            }
+
+            .severity-title {
+                font-size: 18px;
+            }
+
+            .severity-text {
+                font-size: 15px;
+            }
+
+            .btn {
+                padding: 14px 40px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .question-text {
+                font-size: 15px;
             }
         }
     </style>
@@ -607,12 +670,52 @@
         let questions = [];
         let answers = [];
 
-        function toggleLanguage() {
+        async function toggleLanguage() {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
             document.documentElement.lang = currentLang;
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
             document.querySelector('.lang-toggle').textContent = currentLang === 'ar' ? 'English' : 'العربية';
+
+
             updateText();
+
+
+            if (document.querySelector('.question-screen').classList.contains('active')) {
+                try {
+                    const response = await fetch(`${API_URL}/questions?lang=${currentLang}`);
+                    const data = await response.json();
+                    questions = data.questions;
+                    updateQuestion();
+                } catch (error) {
+                    console.error('خطأ في تحديث الأسئلة:', error);
+                }
+            }
+            if (document.querySelector('.result-screen').classList.contains('active')) {
+
+                try {
+                    const response = await fetch(`${API_URL}/calculate`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            answers: answers,
+                            lang: currentLang // إرسال اللغة الجديدة
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        // تحديث النص المترجم للشدة
+                        document.getElementById('severity-text').textContent = result.severity;
+                    } else {
+                        console.error('خطأ في إعادة حساب النتيجة للترجمة:', result.error);
+                    }
+                } catch (error) {
+                    console.error('خطأ في الاتصال لإعادة حساب النتيجة:', error);
+                }
+            }
         }
 
         function updateText() {
@@ -637,9 +740,13 @@
 
         async function startTest() {
             try {
-                // جلب الأسئلة من السيرفر
                 const response = await fetch(`${API_URL}/questions?lang=${currentLang}`);
                 const data = await response.json();
+
+                if (!data.success) {
+                    throw new Error('Failed to load questions');
+                }
+
                 questions = data.questions;
 
                 document.querySelector('.welcome-screen').classList.remove('active');
@@ -649,7 +756,10 @@
                 updateQuestion();
             } catch (error) {
                 console.error('خطأ في جلب الأسئلة:', error);
-                alert('حدث خطأ في الاتصال بالسيرفر. تأكد من تشغيل app.py');
+                const errorMsg = currentLang === 'ar'
+                    ? 'حدث خطأ في الاتصال بالسيرفر. تأكد من تشغيل app.py'
+                    : 'Server connection error. Make sure app.py is running';
+                alert(errorMsg);
             }
         }
 
@@ -666,7 +776,7 @@
                 t.questionNum.replace('{n}', currentQuestion + 1);
 
             document.getElementById('question-text').textContent =
-                questions[currentQuestion];
+                questions[currentQuestion] || '';
         }
 
         function answer(isYes) {
@@ -682,7 +792,7 @@
 
         async function showResults() {
             try {
-                // إرسال الإجابات للسيرفر
+
                 const response = await fetch(`${API_URL}/calculate`, {
                     method: 'POST',
                     headers: {
@@ -696,6 +806,10 @@
 
                 const result = await response.json();
 
+                if (!result.success) {
+                    throw new Error(result.error || 'Calculation failed');
+                }
+
                 document.querySelector('.question-screen').classList.remove('active');
                 document.querySelector('.result-screen').classList.add('active');
 
@@ -703,7 +817,10 @@
                 document.getElementById('severity-text').textContent = result.severity;
             } catch (error) {
                 console.error('خطأ في حساب النتيجة:', error);
-                alert('حدث خطأ في حساب النتيجة');
+                const errorMsg = currentLang === 'ar'
+                    ? 'حدث خطأ في حساب النتيجة'
+                    : 'Error calculating results';
+                alert(errorMsg);
             }
         }
 
@@ -712,6 +829,7 @@
             document.querySelector('.welcome-screen').classList.add('active');
             currentQuestion = 0;
             answers = [];
+            questions = [];
         }
     </script>
 </body>
